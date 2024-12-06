@@ -19,4 +19,18 @@ websockify --web=/usr/share/novnc/ 6080 localhost:5901
 6. Execute DrawingProgram
 
 ## Code Modification
-### Program Architecture
+### Program Architecture (MVC)
+1. class View: Represents the GUI and splits window into panels like button panel and drawing panel. (View and Controller of MVC)
+2. interface UIContext: Ensures subclasses implement methods such as drawLine and drawLabel. 
+3. class NewSwingUI: Implements UIContext and contains the actual drawing methods of labels and lines into the GUI. (Raw method definitions for drawing)
+4. class Model: Contains *item* (lines, shapes, selected objects), basically the *model* of MVC. (Model of MVC)
+5. abstract class Command: Updates model by creating and calling on methods within item subclasses. (Controller of MVC)
+6. class UndoManager: Calls on *command* subclass methods like *execute* to add to model and remove. (Controller of MVC)
+7. Button classes: The button classes call for *Command* subclasses to trigger item methods. (View of MVC)
+
+### Adding New Shape
+1. Define new shape by extending *item*.
+2. Define how to draw shape in *NewSwingUI*.
+3. Define new command by extending *Command*.
+4. Define new button by extending *JButton*.
+5. Create new button instance and add it to button panel in *View*.
