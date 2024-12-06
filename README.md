@@ -10,7 +10,7 @@ vncserver :1
 3. Create a password
 
 ### Connect to Server and Run
-1. run the server with:
+1. run the server with: \
 websockify --web=/usr/share/novnc/ 6080 localhost:5901
 2. Then open in the new browser tab; navigate to that tab, click on vnc.html, and connect with your password. Since there is no GUI program running it will say there is nothing to display. That is okay.
 3. Compile samplecode/*.java
