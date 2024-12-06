@@ -17,3 +17,6 @@ websockify --web=/usr/share/novnc/ 6080 localhost:5901
 4. Change directory into samplecode folder
 5. Run "export DISPLAY=: 1"
 6. Execute DrawingProgram
+
+## Code Modification
+### Program Architecture
