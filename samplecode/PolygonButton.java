@@ -25,7 +25,6 @@ public class PolygonButton  extends JButton implements ActionListener {
     private int pointCount = 0;
     public void mouseClicked(MouseEvent event) {
       int ButtonClicked = event.getButton();
-      System.out.println("Button " + ButtonClicked);
 
       if ((ButtonClicked == 1) && (pointCount <= 2)) {
         ++pointCount;

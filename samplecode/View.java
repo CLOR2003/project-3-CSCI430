@@ -15,6 +15,7 @@ class View extends JFrame {
   private JButton openButton;
   private JButton undoButton;
   private JButton redoButton;
+  private JButton moveButton;
 
   // new button
   private JButton triangleButton;
@@ -105,6 +106,7 @@ class View extends JFrame {
     undoButton = new UndoButton(undoManager);
     redoButton = new RedoButton(undoManager);
     triangleButton = new TriangleButton(undoManager, this, drawingPanel);
+    moveButton = new MoveButton(undoManager, this, drawingPanel, model);
     buttonPanel.add(lineButton);
     buttonPanel.add(labelButton);
     buttonPanel.add(selectButton);
@@ -115,6 +117,7 @@ class View extends JFrame {
     buttonPanel.add(redoButton);
     buttonPanel.add(triangleButton);
     buttonPanel.add(polygonButton);
+    buttonPanel.add(moveButton);
     this.setSize(1000, 600);
   }
   public void refresh() {

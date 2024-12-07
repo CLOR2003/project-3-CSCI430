@@ -16,14 +16,24 @@ public class Triangle extends Item {
   }
   public Triangle(Point point1) {
     this.point1 = point1;
-	point2 = null;
+point2 = null;
     point3 = null;
   }
   public Triangle() {
-	point1 = null;
-	point2 = null;
+point1 = null;
+point2 = null;
     point3 = null;
   }
+
+  @Override
+  public void moveTo(Point newPosition){
+    int dx = newPosition.x - point1.x;
+    int dy = newPosition.y - point1.y;
+    point1.translate(dx, dy);
+    point2.translate(dx, dy);
+    point3.translate(dx, dy);
+  }
+
   public boolean includes(Point point) {
     return ((distance(point, point1 ) < 10.0) || (distance(point, point2)< 10.0) || (distance(point, point3)< 10.0));
   }
@@ -54,4 +64,3 @@ public class Triangle extends Item {
     return "Triangle with points, " + point1 + ", " + point2 + ", " + point3;
   }
 }
-

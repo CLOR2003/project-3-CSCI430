@@ -16,6 +16,21 @@ public class Polygon extends Item {
   public Polygon() {
 pointList = new ArrayList<Point>();
   }
+
+  @Override
+  public void moveTo(Point newPosition){
+    if (pointList.isEmpty()) return; // No points to move
+
+    Point firstPoint = getPointFirst();
+    int dx = newPosition.x - firstPoint.x;
+    int dy = newPosition.y - firstPoint.y;
+
+    // Update each point in the list
+    for (Point point : pointList){
+      point.translate(dx, dy);
+    }
+  }
+
   public boolean includes(Point point) {
     Point lastPoint = pointList.get(pointList.size() - 1);
     Point firstPoint = pointList.get(0);
@@ -26,10 +41,6 @@ pointList = new ArrayList<Point>();
   }
   public void addPoint(Point point){
     pointList.add(point);
-    for (Point i : pointList) {
-      System.out.print(i);
-    }
-    
   }
   public Point[] getPoints() {
     int count = pointList.size();
@@ -38,7 +49,7 @@ pointList = new ArrayList<Point>();
     for(Point p : pointList) {
       array[index] = p;
       index++;
-    }
+    }    
     return array;
   }
   public Point getPointFirst(){
