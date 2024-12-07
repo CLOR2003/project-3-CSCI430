@@ -14,7 +14,7 @@ public class Polygon extends Item {
   
   // Constructor for none
   public Polygon() {
-	pointList = new ArrayList<Point>();
+pointList = new ArrayList<Point>();
   }
   public boolean includes(Point point) {
     Point lastPoint = pointList.get(pointList.size() - 1);
@@ -26,18 +26,26 @@ public class Polygon extends Item {
   }
   public void addPoint(Point point){
     pointList.add(point);
+    for (Point i : pointList) {
+      System.out.print(i);
+    }
+    
   }
   public Point[] getPoints() {
     int count = pointList.size();
     Point[] array = new Point[count];
-    for(int i = 0; i < count - 1; i++) array[i] = pointList.get(i);
+    int index = 0;
+    for(Point p : pointList) {
+      array[index] = p;
+      index++;
+    }
     return array;
   }
   public Point getPointFirst(){
     return pointList.get(0);
   }
   public Point getPointLast(){
-    return pointList.get(pointList.size());
+    return pointList.get(pointList.size()-1);
   }
   public String toString() {
     String string = "Polygon has points: ";
@@ -45,4 +53,3 @@ public class Polygon extends Item {
     return string;
   }
 }
-

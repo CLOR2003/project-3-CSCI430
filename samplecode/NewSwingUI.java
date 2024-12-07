@@ -85,18 +85,22 @@ public class NewSwingUI implements UIContext {
 
   public void drawPolygon(Point[] list) {
     int length = list.length;
-    if (length == 0) {
+    if (length != 0) {
       int[] xpoints = new int[length];
       int[] ypoints = new int[length];
 
-      for (int i = 0; i<length; i++){
-        int x = Math.round((float) (list[i].getX()));
-        int y = Math.round((float) (list[i].getY()));
-        xpoints[i] = x;
-        ypoints[i] = y;
+      int index = 0;
+      for ( Point i : list){
+        if (i != null) {
+          int x = Math.round((float) (i.getX()));
+          int y = Math.round((float) (i.getY()));
+          xpoints[index] = x;
+          ypoints[index] = y;
+          index++;
+        }
+        
       }
-      graphics.drawPolygon(xpoints, ypoints, length);
+      graphics.drawPolygon(xpoints, ypoints, index);
     }
   }
- 
 }

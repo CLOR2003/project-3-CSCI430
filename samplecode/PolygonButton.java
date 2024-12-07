@@ -24,12 +24,32 @@ public class PolygonButton  extends JButton implements ActionListener {
   private class MouseHandler extends MouseAdapter {
     private int pointCount = 0;
     public void mouseClicked(MouseEvent event) {
-    if (++pointCount == 1) {
+      int ButtonClicked = event.getButton();
+      System.out.println("Button " + ButtonClicked);
+
+      if ((ButtonClicked == 1) && (pointCount <= 2)) {
+        ++pointCount;
+      }
+      else if (pointCount >= 3) {
+        ++pointCount;
+      }
+
+      if (pointCount == 1) {
         polygonCommand = new PolygonCommand(View.mapPoint(event.getPoint()));
         undoManager.beginCommand(polygonCommand);
-    } else if (pointCount >= 4) {
-        pointCount = 0;
+        } 
+      else if (pointCount <= 3) {
         polygonCommand.setPolygonPoint(View.mapPoint(event.getPoint()));
+        undoManager.beginCommand(polygonCommand);
+         } 
+      else if ((pointCount > 3) && (ButtonClicked == 1)) {
+        // add another point and line to the polygon
+        polygonCommand.setPolygonPoint(View.mapPoint(event.getPoint()));
+        undoManager.beginCommand(polygonCommand);
+           } 
+      else if ((pointCount > 3) && (ButtonClicked ==  3)) {
+        // end get first point and add last point add line and end
+        pointCount = 0;
         drawingPanel.removeMouseListener(this);
         view.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         undoManager.endCommand(polygonCommand);
