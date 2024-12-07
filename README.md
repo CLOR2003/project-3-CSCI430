@@ -2,12 +2,17 @@
 ## Code Execution
 ### Download JFrame into Codespace
 1. Do the following to setup:
+
 sudo apt-get update
+
 sudo apt-get install -y tightvncserver
+
 sudo apt-get install -y novnc websockify
-2. Run the following code to start a vnc server:
+
+3. Run the following code to start a vnc server:
+
 vncserver :1
-3. Create a password
+5. Create a password
 
 ### Connect to Server and Run
 1. run the server with: \
