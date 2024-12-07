@@ -9,16 +9,16 @@
 2. Run the following code to start a vnc server: \
 vncserver :1
 
-4. Create a password
+3. Create a password
 
 ### Connect to Server and Run
 1. run the server with: \
 websockify --web=/usr/share/novnc/ 6080 localhost:5901
 2. Then open in the new browser tab; navigate to that tab, click on vnc.html, and connect with your password. Since there is no GUI program running it will say there is nothing to display. That is okay.
-3. Compile samplecode/*.java
-4. Change directory into samplecode folder
-5. Run "export DISPLAY=: 1"
-6. Execute DrawingProgram
+3. Compile with javac samplecode/*.java
+4. Change directory into samplecode folder with cd samplecode
+5. Run "export DISPLAY=:1"
+6. Execute "java DrawingProgram"
 
 ## Code Modification
 ### Program Architecture (MVC)
