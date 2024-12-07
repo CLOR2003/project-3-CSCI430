@@ -12,11 +12,6 @@ public class Polygon extends Item {
     }
   }
   
-  // Constructor for Array lists
-  public Polygon(ArrayList<Point> List) {
-    this.pointList = new ArrayList<Point>(List);
-  }
-
   // Constructor for none
   public Polygon() {
 	pointList = new ArrayList<Point>();
@@ -26,22 +21,28 @@ public class Polygon extends Item {
     Point firstPoint = pointList.get(0);
     return ((distance(point, lastPoint) < 10.0) || (distance(point, firstPoint)< 10.0));
   }
-  // Still needs to fix this
   public void render(UIContext uiContext) {
-    uiContext.drawLine(point1, point2);
+    uiContext.drawPolygon(this.getPoints());
   }
   public void addPoint(Point point){
     pointList.add(point);
   }
   public Point[] getPoints() {
-    int count = pointList.size()
+    int count = pointList.size();
     Point[] array = new Point[count];
     for(int i = 0; i < count - 1; i++) array[i] = pointList.get(i);
     return array;
   }
-  // Fix this too
+  public Point getPointFirst(){
+    return pointList.get(0);
+  }
+  public Point getPointLast(){
+    return pointList.get(pointList.size());
+  }
   public String toString() {
-    return "Line  from " + point1 + " to " + point2;
+    String string = "Polygon has points: ";
+    for(Point p: pointList) string = string + ", " + p;
+    return string;
   }
 }
 
