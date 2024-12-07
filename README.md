@@ -12,6 +12,7 @@ sudo apt-get install -y novnc websockify
 3. Run the following code to start a vnc server:
 
 vncserver :1
+
 5. Create a password
 
 ### Connect to Server and Run
